@@ -1,0 +1,32 @@
+import datetime
+
+# Sample list of dictionaries
+todo_list = [
+    {"done": False, "createdAt": datetime.datetime.now(), "title": "Task 1"},
+    {"done": False, "createdAt": datetime.datetime.now(), "title": "Task 2"},
+    {"done": False, "createdAt": datetime.datetime.now(), "title": "Task 3"},
+]
+
+def mark_done(index):
+    if 0 <= index < len(todo_list):
+        todo_list[index]["done"] = True
+        print(f"Task '{todo_list[index]['title']}' marked as done.")
+    else:
+        print("Invalid index. Please try again.")
+
+# Print initial todo list
+print("Initial Todo List:")
+for i, task in enumerate(todo_list):
+    print(f"{i}: {task['title']} - Done: {task['done']}")
+
+# Take user input
+try:
+    user_input = int(input("Enter the index of the task to mark as done: "))
+    mark_done(user_input)
+except ValueError:
+    print("Please enter a valid integer.")
+
+# Print updated todo list
+print("\nUpdated Todo List:")
+for i, task in enumerate(todo_list):
+    print(f"{i}: {task['title']} - Done: {task['done']}")
